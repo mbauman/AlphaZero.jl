@@ -72,14 +72,14 @@ using .Benchmark
 
 const USE_KNET_FOR_NETLIB = false # The Flux netlib is currently broken
 
-include("networks/flux.jl")
-using .FluxNets
+# include("networks/flux.jl")
+# using .FluxNets
 
 # The default user interface is included here for convenience but it could be
 # replaced or separated from the main AlphaZero.jl package (which would also
 # enable dropping some dependencies such as Crayons or JSON3).
 
-include("ui/ui.jl")
-using .UserInterface
+# include("ui/ui.jl")
+# using .UserInterface
 
 end
