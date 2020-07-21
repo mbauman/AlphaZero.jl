@@ -9,10 +9,10 @@ export SimpleNet, SimpleNetHP, ResNet, ResNetHP
 using ..Network
 using Base: @kwdef
 import ..GameInterface, ..Util, ..CyclicSchedule
-#=
 
 using CUDA
 
+#=
 
 import Flux
 import Functors
