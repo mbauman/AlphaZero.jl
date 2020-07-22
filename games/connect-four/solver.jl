@@ -56,6 +56,21 @@ struct Player3 <: AbstractPlayer{Game}
   end
 end
 @info "1.4"
+struct Player4 <: AbstractPlayer{Game}
+  process :: Base.Process
+  function Player4(;
+      solver_dir=DEFAULT_SOLVER_DIR,
+      solver_name="c4solver",
+      disable_stderr=true)
+    cmd = Cmd(`./c4solver`, dir=solver_dir)
+    if disable_stderr
+      cmd = pipeline(cmd, stderr=devnull)
+    end
+    p = open(cmd, "r+")
+    return new(p)
+  end
+end
+@info "1.5"
 struct Player <: AbstractPlayer{Game}
   process :: Base.Process
   function Player(;
