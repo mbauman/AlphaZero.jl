@@ -1,7 +1,7 @@
 import AlphaZero.GI
 
-using Crayons
-using StaticArrays
+using AlphaZero.Crayons
+using AlphaZero.StaticArrays
 
 const NUM_COLS = 7
 const NUM_ROWS = 6
