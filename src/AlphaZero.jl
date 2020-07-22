@@ -50,6 +50,7 @@ using Base: @kwdef
 using DataStructures: CircularBuffer
 using Distributions: Categorical, Dirichlet
 using Statistics: mean
+using Crayons
 
 include("schedule.jl")
 include("params.jl")
