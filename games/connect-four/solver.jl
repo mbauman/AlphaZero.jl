@@ -9,6 +9,7 @@ module Solver
 
 import ..Game, ..history, ..WHITE, ..NUM_CELLS
 import AlphaZero: GI, GameInterface, Benchmark, AbstractPlayer, think
+@info "Solver: after imports"
 
 const DEFAULT_SOLVER_DIR = joinpath(@__DIR__, "solver", "connect4")
 

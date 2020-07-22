@@ -2,6 +2,7 @@ import AlphaZero.GI
 
 using AlphaZero.Crayons
 using AlphaZero.StaticArrays
+@info "game.jl: after usings"
 
 const NUM_COLS = 7
 const NUM_ROWS = 6
