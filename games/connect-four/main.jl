@@ -9,4 +9,5 @@ module ConnectFour
   end
   @info """include("solver.jl")"""
   include("solver.jl")
+  @info """outro"""
 end

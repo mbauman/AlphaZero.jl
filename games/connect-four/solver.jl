@@ -13,6 +13,7 @@ import AlphaZero: GI, GameInterface, Benchmark, AbstractPlayer, think
 
 const DEFAULT_SOLVER_DIR = joinpath(@__DIR__, "solver", "connect4")
 
+@info "1"
 struct Player <: AbstractPlayer{Game}
   process :: Base.Process
   function Player(;
@@ -33,14 +34,17 @@ end
 # - Standard output: space separated
 #     position, score, number of explored node, computation time in μs
 
+@info "2"
 struct SolverOutput
   score :: Int
   num_explored_nodes :: Int64
   time :: Int64 # in μs
 end
+@info "3"
 
 history_string(game) = reduce(*, map(string, history(game)))
 
+@info "4"
 function query_solver(p::Player, g)
   hstr = history_string(g)
   println(p.process, hstr)
@@ -50,6 +54,7 @@ function query_solver(p::Player, g)
   end
   return SolverOutput(args...)
 end
+@info "5"
 
 function remaining_stones(game, player)
   @assert !isnothing(game.history)
@@ -58,6 +63,7 @@ function remaining_stones(game, player)
   (n % 2 == 1 && player == WHITE) && (p += 1)
   return NUM_CELLS ÷ 2 - p
 end
+@info "6"
 
 function value(player, game)
   if !GI.game_terminated(game)
@@ -72,6 +78,7 @@ function value(player, game)
     return v
   end
 end
+@info "7"
 
 function qvalue(player, game, action)
   @assert !GI.game_terminated(game)
@@ -83,6 +90,7 @@ function qvalue(player, game, action)
   end
   return qnext
 end
+@info "8"
 
 function think(p::Player, g)
   as = GI.available_actions(g)
@@ -93,7 +101,9 @@ function think(p::Player, g)
   π[opt] .= 1 / length(opt)
   return as, π
 end
+@info "9"
 
 Benchmark.PerfectPlayer(::Type{Game}) = Player
+@info "10"
 
 end
