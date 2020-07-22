@@ -13,7 +13,49 @@ import AlphaZero: GI, GameInterface, Benchmark, AbstractPlayer, think
 
 const DEFAULT_SOLVER_DIR = joinpath(@__DIR__, "solver", "connect4")
 
-@info "1"
+@info "1.0"
+struct Player0 <: AbstractPlayer{Game}
+end
+@info "1.1"
+struct Player1 <: AbstractPlayer{Game}
+  process :: Base.Process
+end
+@info "1.2"
+struct Player2 <: AbstractPlayer{Game}
+  process :: Base.Process
+  function Player2(;
+      solver_dir=DEFAULT_SOLVER_DIR,
+      solver_name="c4solver",
+      disable_stderr=true)
+    return new()
+  end
+end
+@info "1.25"
+struct Player25 <: AbstractPlayer{Game}
+  process :: Base.Process
+  function Player25(;
+      solver_dir=DEFAULT_SOLVER_DIR,
+      solver_name="c4solver",
+      disable_stderr=true)
+    return new(open(`echo`))
+  end
+end
+@info "1.3"
+struct Player3 <: AbstractPlayer{Game}
+  process :: Base.Process
+  function Player3(;
+      solver_dir=DEFAULT_SOLVER_DIR,
+      solver_name="c4solver",
+      disable_stderr=true)
+    cmd = Cmd(`echo`, dir=solver_dir)
+    if disable_stderr
+      cmd = pipeline(cmd, stderr=devnull)
+    end
+    p = open(cmd, "r+")
+    return new(p)
+  end
+end
+@info "1.4"
 struct Player <: AbstractPlayer{Game}
   process :: Base.Process
   function Player(;
