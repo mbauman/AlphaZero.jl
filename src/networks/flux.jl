@@ -12,8 +12,6 @@ import ..GameInterface, ..Util, ..CyclicSchedule
 
 using CUDA
 
-#=
-
 import Flux
 import Functors
 
@@ -184,5 +182,4 @@ Network.on_gpu(nn::TwoHeadNetwork) = array_on_gpu(nn.vhead[end].b)
 include("architectures/simplenet.jl")
 include("architectures/resnet.jl")
 
-=#
 end
