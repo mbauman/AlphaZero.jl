@@ -8,7 +8,7 @@ ENV["JULIA_CUDA_MEMORY_POOL"] = "split" # "binned" / "split"
 ENV["GKSwstype"]="nul"
 
 @info "using AlphaZero"
-using AlphaZero
+using AlphaZero, Crayons
 
 const DUMMY_RUN = false
 @info "include dummy_run.jl"
