@@ -212,6 +212,8 @@ end
 Return the total number of regularized parameters of a network.
 """
 function num_regularized_parameters(nn::AbstractNetwork)
+  @info "nn = $nn"
+  @info "length(regularized_params(nn)) = $(length(regularized_params(nn)))"
   return sum(length(p) for p in regularized_params(nn))
 end
 
