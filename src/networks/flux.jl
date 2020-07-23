@@ -127,11 +127,16 @@ end
 
 function Network.regularized_params(net::FluxNetwork)
   ps = Flux.Params()
+  n = 0; m = 0
   foreach_flux_node(net) do p
+    n += 1
+    @info "p = $p"
     for r in regularized_params_(p)
+      m += 1
       any(x -> x === r, ps) || push!(ps, r)
     end
   end
+  @info "visited $n nodes with $m unduplicated params"
   return ps
 end
 

@@ -10,6 +10,9 @@ ENV["GKSwstype"]="nul"
 @info "using AlphaZero"
 using AlphaZero
 
+@info sprint(x->Pkg.API.status(io=x))
+@info sprint(x->Pkg.API.status(io=x, mode=Pkg.PKGMODE_MANIFEST))
+
 const DUMMY_RUN = false
 @info "include dummy_run.jl"
 include("../scripts/lib/dummy_run.jl")
