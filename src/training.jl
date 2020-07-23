@@ -115,6 +115,7 @@ Return a report summarizing the configuration of agent before training starts,
 as an object of type [`Report.Initial`](@ref).
 """
 function initial_report(env::Env)
+  @info "$(summary(env.curnn))"
   num_network_parameters = Network.num_parameters(env.curnn)
   num_reg_params = Network.num_regularized_parameters(env.curnn)
   player = MctsPlayer(env.curnn, env.params.self_play.mcts)

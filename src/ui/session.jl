@@ -349,8 +349,11 @@ function Session(
     session = Session(env, dir, logger, autosave, save_intermediate, benchmark)
     session.report = load_session_report(dir, env.itc)
   else
+    @info "$(summary(netparams))"
     network = Net(netparams)
+    @info "$(summary(params), summary(network))"
     env = Env{Game}(params, network)
+    @info "Session()"
     session = Session(env, dir, logger, autosave, save_intermediate, benchmark)
     Log.section(session.logger, 1, "Initializing a new AlphaZero environment")
     zeroth_iteration!(session)
