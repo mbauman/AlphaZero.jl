@@ -351,7 +351,7 @@ function Session(
   else
     @info "$(summary(netparams))"
     network = Net(netparams)
-    @info "$(summary(params), summary(network))"
+    @info "$((summary(params), summary(network)))"
     env = Env{Game}(params, network)
     @info "Session()"
     session = Session(env, dir, logger, autosave, save_intermediate, benchmark)
