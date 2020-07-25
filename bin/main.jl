@@ -2,18 +2,18 @@
 ##### Main script for the JuliaCon 2020 demo
 #####
 
-ENV["JULIA_CUDA_MEMORY_POOL"] = "split" # "binned" / "split"
+@everywhere ENV["JULIA_CUDA_MEMORY_POOL"] = "split" # "binned" / "split"
 
 # Enables running the script on a distant machine without an X server
-ENV["GKSwstype"]="nul"
+@everywhere ENV["GKSwstype"]="nul"
 
 @everywhere using AlphaZero
 
-const DUMMY_RUN = false
-include("../scripts/lib/dummy_run.jl")
+@everywhere const DUMMY_RUN = false
+@everywhere include("/home/jrun/AlphaZero.jl/scripts/lib/dummy_run.jl")
 
-include("../games/connect-four/main.jl")
-using .ConnectFour: Game, Training
+@everywhere include("/home/jrun/AlphaZero.jl/games/connect-four/main.jl")
+@everywhere using .ConnectFour: Game, Training
 
 params, benchmark = Training.params, Training.benchmark
 if DUMMY_RUN
