@@ -18,7 +18,8 @@ struct Player <: AbstractPlayer{Game}
       solver_dir=DEFAULT_SOLVER_DIR,
       solver_name="c4solver",
       disable_stderr=true)
-    cmd = Cmd(`./$solver_name`, dir=solver_dir)
+    solver_name == "c4solver" || error()
+    cmd = Cmd(`./c4solver`, dir=solver_dir)
     if disable_stderr
       cmd = pipeline(cmd, stderr=devnull)
     end

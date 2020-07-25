@@ -23,11 +23,22 @@ end
 session = Session(
   Game,
   Training.Network{Game},
-  params,
+  Params(params, num_iters=3),
   Training.netparams,
   benchmark=benchmark,
   dir="sessions/connect-four",
   autosave=true,
   save_intermediate=false)
 
+@info "training!"
 resume!(session)
+
+# -- output
+import Tar
+import TranscodingStreams: TranscodingStream
+import CodecZlib: GzipCompressor
+
+open("sessions.tar.gz", "w") do io
+  Tar.create("sessions", TranscodingStream(GzipCompressor(), io))
+end
+ENV["RESULTS_FILE_TO_UPLOAD"] = "sessions.tar.gz"
