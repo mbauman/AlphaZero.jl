@@ -31,7 +31,7 @@ end
 session = Session(
   Game,
   Training.Network{Game},
-  Params(params, num_iters=3),
+  Params(params, num_iters=3, self_play=SelfPlayParams(params.self_play, num_games = 400, num_workers=8)),
   Training.netparams,
   benchmark=benchmark,
   dir="sessions/connect-four",
